@@ -1,0 +1,92 @@
+#!/bin/bash
+echo ":::::::::: Starting of Project::::::::::"
+
+for variable in 1 2 3 4 5 . . N
+do
+
+   echo "Welcome $variable Times"
+
+echo "Select A Given Available Option"
+echo "1 - Create A New File "
+echo "2 - Display All Data"
+echo "3 - Search Files"
+echo "4 - Remove File"
+echo "5 - Check Parking"
+echo " "
+
+
+
+read choice 
+case $choice in 
+1)
+echo "----------CREATE A A NEW FILE----------"
+echo "Give File Name"
+read fname
+touch $fname
+echo "Give Owner Name"
+cat >> $fname
+echo "Give Vehicle Number" 
+cat >>  $fname
+echo "File Created With Content"
+cat $fname
+echo " "
+
+;;
+
+
+
+
+2)
+echo "All Available File(s) "
+ls
+echo " "
+;;
+
+3)
+echo "Search Files"
+echo "Give File Name"
+read rfile
+
+FILE=/etc/resolv.conf
+if [ -f "$rfile" ]; then
+    echo "$rfile exists in search"
+
+echo " "
+else 
+    echo "$rfile not exist in search"
+fi
+
+echo " "
+;;
+
+
+4)
+echo "Give Filename To Be Removed"
+read delfile
+echo $delfile"  will be removed"
+rm $delfile
+echo "FILE REMOVED"
+echo " "
+;;
+
+
+5)
+echo "Give Filename To Check Availability"
+read chk
+FILE=/etc/resolv.conf
+if [ -f "$chk" ]; then
+    echo "$chk available with credentials"
+cat $chk
+echo " "
+else 
+    echo "$chk not available"
+fi
+echo " "
+;;
+
+*)
+echo ":::Running Again:::"
+echo " "
+;;
+esac
+done
